@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SŠ teleinformatiky Ostrava</title>
+<meta name="description" content="Střední škola teleinformatiky v Ostravě-Porubě. Maturitní obory Informační technologie a Informační a komunikační technologie.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<script>
+  // Motiv se nastaví ještě před vykreslením, aby stránka neblikla: uložená volba, jinak podle systému.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('teleinformatika-theme'); } catch (e) {}
+    if (t !== 'dark' && t !== 'light') {
+      t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@600;700&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+
+<!-- Navigace -->
+<button type="button" class="nav-peek" aria-label="Zobrazit navigaci" title="Zobrazit navigaci" aria-hidden="true" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+<header class="nav">
+  <nav class="nav-in" aria-label="Hlavní navigace">
+    <a class="brand" href="https://www.teleinformatika.eu/" aria-label="Teleinformatika.eu, úvodní stránka">
+      <img src="img/logo.png" alt="">
+      <span class="brand-name">Teleinformatika</span>
+    </a>
+    <div class="nav-links">
+      <a class="navlink navlink-on" data-nav="uvod" href="https://www.teleinformatika.eu/" aria-current="page">Úvod</a>
+      <a class="navlink" href="https://www.teleinformatika.eu/charakteristika-skoly/">O&nbsp;škole</a>
+      <a class="navlink" data-nav="obory" href="#obory">Studium</a>
+      <a class="navlink" href="https://www.teleinformatika.eu/souteze/">Aktivity</a>
+      <a class="navlink" href="https://www.teleinformatika.eu/verejne-zakazky/">Úřední deska</a>
+      <a class="navlink" href="https://www.teleinformatika.eu/kontaktni-informace/">Kontakt</a>
+    </div>
+    <div class="nav-right">
+      <button type="button" class="iconbtn theme-btn" aria-label="Přepnout na tmavý režim" title="Přepnout na tmavý režim">
+        <svg class="ic ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        <svg class="ic ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      </button>
+      <button type="button" class="pillbtn hide-sm student-btn" aria-expanded="false" aria-controls="pro-zaky">Pro žáky a&nbsp;rodiče<svg class="ic chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+      <a class="btn btn-dark btn-sm hide-sm" href="https://www.teleinformatika.eu/prijimaci-rizeni/">Přijímačky</a>
+      <button type="button" class="menu-btn iconbtn" aria-label="Menu" aria-expanded="false" aria-controls="mobilni-menu">
+        <svg class="ic ic-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        <svg class="ic ic-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="drop-wrap">
+    <div id="pro-zaky" class="panel panel-student drop" role="region" aria-label="Pro žáky a rodiče" hidden>
+      <a class="plink" href="https://www.skolaonline.cz/Aktuality.aspx"><span class="plink-t">Škola online</span><span class="plink-d">Známky a průběžné hodnocení</span></a>
+      <a class="plink" href="https://www.strava.cz/strava/Stravnik/Prihlaseni?zarizeni=5270"><span class="plink-t">Objednávky obědů</span><span class="plink-d">Strava.cz, objednávání a odhlašování</span></a>
+      <a class="plink" href="https://www.strava.cz/Strava/Stravnik/Jidelnicky?zarizeni=5270"><span class="plink-t">Jídelní lístek</span><span class="plink-d">Co se tento týden vaří</span></a>
+      <a class="plink" href="https://www.teleinformatika.eu/docs/konzultacni_hodiny.pdf"><span class="plink-t">Konzultační hodiny</span><span class="plink-d">Kdy zastihnete vyučující</span></a>
+      <a class="plink" href="https://www.teleinformatika.eu/docs/plan26-27.pdf"><span class="plink-t">Plán školního roku 2026/2027</span><span class="plink-d">Termíny na celý rok v PDF</span></a>
+      <div class="panel-foot">Sekretariát: <a href="tel:+420596912253">596 912 253</a><br><a href="mailto:sekretariat@teleinformatika.eu">sekretariat@teleinformatika.eu</a></div>
+    </div>
+  </div>
+
+  <div class="drop-wrap">
+    <div id="mobilni-menu" class="panel panel-menu drop" hidden>
+      <a class="mlink mlink-on" data-nav="uvod" href="https://www.teleinformatika.eu/" aria-current="page">Úvod</a>
+      <a class="mlink" href="https://www.teleinformatika.eu/charakteristika-skoly/">O&nbsp;škole</a>
+      <a class="mlink" data-nav="obory" href="#obory">Studium</a>
+      <a class="mlink" href="https://www.teleinformatika.eu/souteze/">Aktivity</a>
+      <a class="mlink" href="https://www.teleinformatika.eu/verejne-zakazky/">Úřední deska</a>
+      <a class="mlink" href="https://www.teleinformatika.eu/kontaktni-informace/">Kontakt</a>
+      <div class="menu-label">Pro žáky a&nbsp;rodiče</div>
+      <a class="mlink mlink-sub" href="https://www.skolaonline.cz/Aktuality.aspx">Škola online</a>
+      <a class="mlink mlink-sub" href="https://www.strava.cz/strava/Stravnik/Prihlaseni?zarizeni=5270">Objednávky obědů</a>
+      <a class="mlink mlink-sub" href="https://www.strava.cz/Strava/Stravnik/Jidelnicky?zarizeni=5270">Jídelní lístek</a>
+      <a class="mlink mlink-sub" href="https://www.teleinformatika.eu/docs/konzultacni_hodiny.pdf">Konzultační hodiny</a>
+      <a class="mlink mlink-sub" href="https://www.teleinformatika.eu/docs/plan26-27.pdf">Plán školního roku 2026/2027</a>
+      <a class="btn btn-dark menu-cta" href="https://www.teleinformatika.eu/prijimaci-rizeni/">Přijímací řízení</a>
+    </div>
+  </div>
+</header>
+
+<!-- Úvod: nadpis, fotky školy a tento týden -->
+<section id="obsah" class="hero">
+  <div class="wrap">
+    <div class="hero-top r1">
+      <div class="hero-text">
+        <p class="hero-kicker">Střední škola teleinformatiky, Ostrava-Poruba</p>
+        <h1 class="hero-title">Studium IT a&nbsp;<span class="grad">počítačových sítí</span></h1>
+        <p class="hero-lead">Dva čtyřleté maturitní obory: Informační technologie a&nbsp;Informační a&nbsp;komunikační technologie. Výuka probíhá v&nbsp;odborných učebnách, součástí studia je Cisco akademie.</p>
+      </div>
+      <div class="hero-btns">
+        <a class="btn btn-dark" href="https://www.teleinformatika.eu/prijimaci-rizeni/">Přijímací řízení</a>
+        <a class="btn btn-light" href="https://www.teleinformatika.eu/dny-otevrenych-dveri/">Dny otevřených dveří</a>
+      </div>
+    </div>
+
+    <div class="hero-grid r2">
+      <figure class="hero-photo">
+        <img src="img/hlavni-budova.webp" alt="Hlavní budova školy na Opavské ulici">
+        <figcaption>Hlavní budova na Opavské ulici v&nbsp;<span style="white-space: nowrap">Ostravě-Porubě</span></figcaption>
+      </figure>
+
+      <aside class="week" aria-labelledby="tyden-nadpis">
+        <div class="week-head">
+          <h2 id="tyden-nadpis">Tento týden ve škole</h2>
+          <a href="https://www.teleinformatika.eu/aktualne/udalosti/">Kalendář</a>
+        </div>
+        <ol class="week-list js-events">
+          <li class="week-item" data-date="2026-11-09">
+            <div class="ev-date"><span class="ev-day">9</span><span class="ev-wd">po</span></div>
+            <div class="week-body">
+              <a class="week-t" href="https://www.teleinformatika.eu/aktualne/udalosti/">Beseda z&nbsp;Amerického centra „Ask an American“</a>
+              <span class="ev-m" data-meta="Žáci 2. ročníku">Žáci 2.&nbsp;ročníku</span>
+            </div>
+          </li>
+          <li class="week-item" data-date="2026-11-10">
+            <div class="ev-date"><span class="ev-day">10</span><span class="ev-wd">út</span></div>
+            <div class="week-body">
+              <a class="week-t" href="https://www.teleinformatika.eu/aktualne/udalosti/beseda-alkohol-a-navykove-latky-pro-2-rocnik/">Beseda „Alkohol a&nbsp;návykové látky“ pro 2.&nbsp;ročníky</a>
+              <span class="ev-m" data-meta="Žáci 2. ročníku">Žáci 2.&nbsp;ročníku</span>
+            </div>
+          </li>
+          <li class="week-item" data-date="2026-11-11">
+            <div class="ev-date"><span class="ev-day">11</span><span class="ev-wd">st</span></div>
+            <div class="week-body">
+              <a class="week-t" href="https://www.teleinformatika.eu/aktualne/udalosti/">Klasifikační porada za 1.&nbsp;čtvrtletí</a>
+              <span class="ev-m" data-meta="Od 14:00, pedagogický sbor">Od 14:00, pedagogický sbor</span>
+            </div>
+          </li>
+          <li class="week-item" data-date="2026-11-11">
+            <div class="ev-date"><span class="ev-day">11</span><span class="ev-wd">st</span></div>
+            <div class="week-body">
+              <a class="week-t" href="https://www.teleinformatika.eu/aktualne/udalosti/tridni-schuzky-pro-1-4-rocniky/">Třídní schůzky pro 1.–4.&nbsp;ročníky</a>
+              <span class="ev-m" data-meta="Od 16:00, rodiče žáků 1.–4. ročníku">Od 16:00, rodiče žáků 1.–4.&nbsp;ročníku</span>
+            </div>
+          </li>
+        </ol>
+        <p class="week-empty" hidden>Tento týden už žádné akce nejsou.</p>
+        <a class="week-all" href="https://www.teleinformatika.eu/aktualne/udalosti/">Všechny události</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Prostory -->
+<section class="sec" style="padding-bottom: 0">
+  <div class="wrap rv">
+    <div class="sec-row">
+      <div>
+        <h2 class="h2">Prostory školy</h2>
+        <p class="lead">Odborné učebny, tělocvična, jídelna i&nbsp;domov mládeže.</p>
+      </div>
+    </div>
+    <div class="spaces">
+      <figure class="space"><img src="img/ucebna.webp" alt="" loading="lazy"><figcaption>Odborné učebny</figcaption></figure>
+      <figure class="space"><img src="img/odpocinkova-zona.webp" alt="" loading="lazy"><figcaption>Odpočinkové zóny</figcaption></figure>
+      <figure class="space"><img src="img/telocvicna.webp" alt="" loading="lazy"><figcaption>Tělocvična</figcaption></figure>
+      <figure class="space"><img src="img/domov-mladeze.webp" alt="" loading="lazy"><figcaption>Domov mládeže</figcaption></figure>
+      <figure class="space"><img src="img/jidelna.webp" alt="" loading="lazy"><figcaption>Školní jídelna</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Aktuality a kalendář -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-row">
+      <h2 class="h2">Aktuality</h2>
+      <a class="btn btn-light btn-sm" href="https://www.teleinformatika.eu/aktualne/">Všechny aktuality</a>
+    </div>
+    <div class="g-news">
+      <div>
+        <div class="tabs" role="tablist" aria-label="Rubriky aktualit">
+          <button type="button" role="tab" aria-selected="true" class="tab tab-on" data-cat="Vše">Vše</button>
+          <button type="button" role="tab" aria-selected="false" class="tab" data-cat="Školní činnost">Školní činnost</button>
+          <button type="button" role="tab" aria-selected="false" class="tab" data-cat="Maturita">Maturita</button>
+          <button type="button" role="tab" aria-selected="false" class="tab" data-cat="Přijímací řízení">Přijímací řízení</button>
+          <button type="button" role="tab" aria-selected="false" class="tab" data-cat="Kurzy">Kurzy</button>
+        </div>
+
+        <div class="g-feat">
+          <a class="news-main" data-cat="Školní činnost" href="https://www.teleinformatika.eu/aktualne/2026/11/potravinova-sbirka-11/">
+            <div class="news-img"><img src="img/potravinova-sbirka.webp" alt="" loading="lazy"></div>
+            <div class="news-meta">Školní činnost, 4.&nbsp;listopadu 2026</div>
+            <h3 class="news-title">Potravinová sbírka</h3>
+          </a>
+          <div class="news-list">
+            <a class="news-row" data-cat="Školní činnost" href="https://www.teleinformatika.eu/aktualne/2026/11/uspech-nasich-zaku-v-okresnim-kole-souteze-v-pisqworkach/">
+              <span class="news-thumb" aria-hidden="true"><img src="img/piskvorky.jpg" alt="" loading="lazy"></span>
+              <span class="news-row-txt">
+                <span class="news-row-t">Úspěch našich žáků v&nbsp;okresním kole soutěže v&nbsp;Pišqworkách</span>
+                <span class="news-meta">4.&nbsp;listopadu 2026</span>
+              </span>
+            </a>
+            <a class="news-row" data-cat="Školní činnost" href="https://www.teleinformatika.eu/aktualne/2026/11/gaudeamus/">
+              <span class="news-thumb" aria-hidden="true"><img src="img/gaudeamus.jpg" alt="" loading="lazy"></span>
+              <span class="news-row-txt">
+                <span class="news-row-t">Gaudeamus</span>
+                <span class="news-meta">4.&nbsp;listopadu 2026</span>
+              </span>
+            </a>
+            <a class="news-row" data-cat="Školní činnost" href="https://www.teleinformatika.eu/aktualne/2026/11/halloween-na-nasi-skole/">
+              <span class="news-thumb" aria-hidden="true"><img src="img/halloween.jpg" alt="" loading="lazy"></span>
+              <span class="news-row-txt">
+                <span class="news-row-t">Halloween na naší škole</span>
+                <span class="news-meta">4.&nbsp;listopadu 2026</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="empty" hidden>
+          <div class="empty-t">V&nbsp;rubrice <span class="empty-cat"></span> zatím nejsou žádné aktuality</div>
+          <div class="empty-d">Zkuste jinou rubriku nebo archiv aktualit v&nbsp;patičce.</div>
+        </div>
+      </div>
+
+      <aside class="quick" aria-labelledby="rychle-nadpis">
+        <h2 id="rychle-nadpis">Pro žáky a&nbsp;rodiče</h2>
+        <ul>
+          <li>
+            <a class="quick-link" href="https://www.skolaonline.cz/Aktuality.aspx">
+              <span class="quick-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path></svg></span>
+              <span class="quick-txt"><span class="quick-t">Škola online</span><span class="ev-m">Známky a&nbsp;průběžné hodnocení</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="quick-link" href="https://www.strava.cz/strava/Stravnik/Prihlaseni?zarizeni=5270">
+              <span class="quick-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg></span>
+              <span class="quick-txt"><span class="quick-t">Objednávky obědů</span><span class="ev-m">Strava.cz, objednávání a&nbsp;odhlašování</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="quick-link" href="https://www.strava.cz/Strava/Stravnik/Jidelnicky?zarizeni=5270">
+              <span class="quick-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M12 11h4M12 16h4M8 11h.01M8 16h.01"></path></svg></span>
+              <span class="quick-txt"><span class="quick-t">Jídelní lístek</span><span class="ev-m">Co se tento týden vaří</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="quick-link" href="https://www.teleinformatika.eu/docs/konzultacni_hodiny.pdf">
+              <span class="quick-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></span>
+              <span class="quick-txt"><span class="quick-t">Konzultační hodiny</span><span class="ev-m">Kdy zastihnete vyučující</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="quick-link" href="https://www.teleinformatika.eu/docs/plan26-27.pdf">
+              <span class="quick-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></span>
+              <span class="quick-txt"><span class="quick-t">Plán školního roku 2026/2027</span><span class="ev-m">Termíny na celý rok v&nbsp;PDF</span></span>
+            </a>
+          </li>
+        </ul>
+        <p class="quick-foot">Sekretariát: <a href="tel:+420596912253">596 912 253</a><br><a href="mailto:sekretariat@teleinformatika.eu">sekretariat@teleinformatika.eu</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Obory -->
+<section id="obory" class="sec sec-gray">
+  <div class="wrap rv">
+    <div class="sec-head center">
+      <h2 class="h2">Studijní obory</h2>
+      <p class="lead">Oba obory jsou čtyřleté a&nbsp;končí maturitou. Společný základ tvoří programování, tvorba webů a&nbsp;počítačové sítě v&nbsp;Cisco akademii.</p>
+    </div>
+    <div class="g-obory">
+      <article class="obor">
+        <span class="obor-code">Kód oboru 18-20-M/01</span>
+        <h3>Informační technologie</h3>
+        <dl>
+          <div>
+            <dt>Zaměření</dt>
+            <dd>Hardware, operační systémy a&nbsp;počítačová grafika</dd>
+          </div>
+          <div>
+            <dt>Pro koho je obor vhodný</dt>
+            <dd>Pro uchazeče, které zajímá počítač jako celek, od hardwaru přes správu systémů až po vývoj aplikací.</dd>
+          </div>
+        </dl>
+        <a class="btn btn-dark btn-block" href="https://www.teleinformatika.eu/informace-o-studiu-it/">Informace o&nbsp;oboru IT</a>
+      </article>
+      <article class="obor obor-acc">
+        <span class="obor-code">Kód oboru 26-45-M/01</span>
+        <h3>Informační a&nbsp;komunikační technologie</h3>
+        <dl>
+          <div>
+            <dt>Zaměření</dt>
+            <dd>Telekomunikační sítě, zabezpečovací technika a&nbsp;elektrotechnika</dd>
+          </div>
+          <div>
+            <dt>Pro koho je obor vhodný</dt>
+            <dd>Pro uchazeče, které kromě počítačů zajímají telekomunikační sítě a&nbsp;elektrotechnika.</dd>
+          </div>
+        </dl>
+        <a class="btn btn-white btn-block" href="https://www.teleinformatika.eu/informace-o-studiu-ikt/">Informace o&nbsp;oboru IKT</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Výsledky a den otevřených dveří -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <h2 class="h2">Výsledky školy</h2>
+    </div>
+    <div class="g-res">
+      <div class="stat">
+        <span class="stat-n">95 %</span>
+        <span class="stat-t">maturantů ročníku 2023 pokračuje ve studiu nebo nastoupilo do zaměstnání</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">93 %</span>
+        <span class="stat-t">žáků by školu doporučilo dalším zájemcům</span>
+      </div>
+      <div class="dod">
+        <h2>Den otevřených dveří</h2>
+        <p>Provedeme vás odbornými učebnami a&nbsp;domovem mládeže a&nbsp;odpovíme na dotazy k&nbsp;přijímacímu řízení.</p>
+        <div class="dod-btns">
+          <a class="btn btn-white" href="https://www.teleinformatika.eu/dny-otevrenych-dveri/">Zobrazit termíny</a>
+          <a class="btn btn-glass" href="https://www.teleinformatika.eu/prijimaci-rizeni/">Přijímací řízení</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mimo vyučování -->
+<section class="sec sec-gray">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <h2 class="h2">Mimo vyučování</h2>
+      <p class="lead">Žáci se mohou zapojit do kurzů, soutěží, školní firmy nebo časopisu. Pro dojíždějící je k&nbsp;dispozici domov mládeže.</p>
+    </div>
+    <ul class="g-life">
+      <li>
+        <a class="life" href="https://www.teleinformatika.eu/cisco-academy/">
+          <span class="life-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"></path></svg></span>
+          <span class="life-t">Cisco academy</span>
+          <span class="life-d">Kurzy počítačových sítí s vlastními instruktory a vybavenou laboratoří.</span>
+        </a>
+      </li>
+      <li>
+        <a class="life" href="https://telecorp.cz">
+          <span class="life-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+          <span class="life-t">Školní firma TeleCorp</span>
+          <span class="life-d">Firma, ve které si žáci vyzkouší práci na skutečných zakázkách.</span>
+        </a>
+      </li>
+      <li>
+        <a class="life" href="https://www.teleinformatika.eu/souteze/">
+          <span class="life-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg></span>
+          <span class="life-t">Soutěže</span>
+          <span class="life-d">Pišqworky a další soutěže, ve kterých žáci reprezentují školu.</span>
+        </a>
+      </li>
+      <li>
+        <a class="life" href="https://teleinformatika.sharepoint.com/sites/telepis">
+          <span class="life-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"></path></svg></span>
+          <span class="life-t">Časopis TelePis</span>
+          <span class="life-d">Školní časopis, který píší sami žáci.</span>
+        </a>
+      </li>
+      <li>
+        <a class="life" href="https://www.teleinformatika.eu/krouzky-pro-zs/">
+          <span class="life-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+          <span class="life-t">Kroužky pro základní školy</span>
+          <span class="life-d">Technické kroužky pro žáky základních škol.</span>
+        </a>
+      </li>
+      <li>
+        <a class="life" href="https://www.teleinformatika.eu/informace-o-ubytovani/">
+          <span class="life-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"></path></svg></span>
+          <span class="life-t">Domov mládeže</span>
+          <span class="life-d">Ubytování pro žáky ze vzdálenějších míst.</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Patička -->
+<footer class="foot">
+  <div class="wrap g-foot">
+    <div>
+      <div class="foot-brand">
+        <img src="img/logo-white.png" alt="">
+        <span>Teleinformatika</span>
+      </div>
+      <p class="foot-school">Střední škola teleinformatiky, Ostrava, příspěvková organizace</p>
+      <p class="foot-contact"><a class="flink" href="tel:+420596912253">+420 596 912 253</a><br><a class="flink" href="mailto:sekretariat@teleinformatika.eu">sekretariat@teleinformatika.eu</a><br>Datová schránka ti3fdyn</p>
+      <div class="fchips foot-social">
+        <a class="fchip" href="https://www.facebook.com/teleinformatika/">Facebook</a>
+        <a class="fchip" href="https://www.instagram.com/ssteleinformatiky/">Instagram</a>
+      </div>
+    </div>
+    <div>
+      <h2>Kde nás najdete</h2>
+      <p>Opavská 1119/12<br>708 61 Ostrava-Poruba</p>
+      <a class="flink foot-map" href="https://goo.gl/maps/G3hbLoBqgcFy82z7A">Otevřít v&nbsp;mapách</a>
+      <p class="foot-small">Parkoviště najdete na souřadnicích 49.8307619N, 18.1847750E.</p>
+    </div>
+    <div>
+      <h2>Užitečné odkazy</h2>
+      <div class="foot-links">
+        <a class="flink" href="https://www.teleinformatika.eu/prijimaci-rizeni/">Přijímací řízení</a>
+        <a class="flink" href="https://www.teleinformatika.eu/maturitni-zkouska-obecne-informace/">Maturitní zkouška</a>
+        <a class="flink" href="https://www.teleinformatika.eu/docs/skolni_rad.pdf">Školní řád</a>
+        <a class="flink" href="https://www.teleinformatika.eu/zadosti-a-potvrzeni-ke-stazeni/">Žádosti a&nbsp;potvrzení</a>
+        <a class="flink" href="https://www.teleinformatika.eu/informace-o-ubytovani/">Ubytování</a>
+        <a class="flink" href="https://www.teleinformatika.eu/projekty/">Projekty</a>
+      </div>
+    </div>
+    <div>
+      <h2>Archiv aktualit 2025/2026</h2>
+      <div class="fchips foot-months">
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2025/09/">září</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2025/10/">říjen</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2025/11/">listopad</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2025/12/">prosinec</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2026/01/">leden</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2026/02/">únor</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2026/03/">březen</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2026/04/">duben</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2026/05/">květen</a>
+        <a class="fchip" href="https://www.teleinformatika.eu/aktualne/2026/06/">červen</a>
+      </div>
+      <div class="foot-links foot-small">
+        <a class="flink" href="https://www.teleinformatika.eu/gdpr">Ochrana osobních údajů</a>
+        <a class="flink" href="https://www.teleinformatika.eu/cookies">Soubory cookies</a>
+        <a class="flink" href="https://www.teleinformatika.eu/mapa-stranek">Mapa stránek</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>©2026 SŠ teleinformatiky, Ostrava. Zřizovatelem školy je <a class="flink foot-msk" href="https://www.msk.cz/">Moravskoslezský kraj</a>.</span>
+      <span>Návrh redesignu: <a href="https://dudaondrej.eu">dudaondrej.eu</a></span>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="to-top" aria-label="Zpět nahoru" title="Zpět nahoru" aria-hidden="true" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+
+<script src="app.js"></script>
+</body>
+</html>
